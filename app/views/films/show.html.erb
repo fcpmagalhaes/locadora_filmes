@@ -1,0 +1,48 @@
+<div class="container">
+	<div class="jumbotron">
+		<article>
+			<header>
+				<h1><%= @film.name %></h1>
+				<%= imagem(@film) %>
+			</header>
+			
+			<h2>Descrição</h2>
+
+			<p>
+				<%= @film.description %>
+			</p>
+
+			<table>
+				<tr>
+					<th>Ano</th>
+					<td><%=@film.year%></td>
+				</tr>
+				<tr>
+					<th>Gênero&nbsp;</th>
+					<td><%=@film.genre.name%></td>
+				</tr>
+				<tr>
+					<th>Preço</th>
+					<td><%=number_to_currency(@film.price)%></td>
+				</tr>
+			</table>
+
+		</article>
+		<%= link_to pluralize(@film.comments.size, 'Comentário', 'Comentários'), film_comments_path(@film)%>
+		<%= link_to 'Novo Comentário', new_film_comment_path(@film), class: 'btn btn-primary'%>
+	</div>
+
+
+	<%= link_to films_path, class: 'btn btn-link' do%>
+		<i class="glyphicon glyphicon-home"> Filmes</i>
+	<%end%>
+
+	<%= link_to edit_film_path(@film), class: 'btn btn-link' do%>
+		<i class="glyphicon glyphicon-edit "> Editar</i>
+	<%end%>
+
+	<%= link_to film_path(@film), method: :delete, data:{ confirm: "Deseja deletar este filme?"}, class: 'btn btn-link' do%>
+		<i class="glyphicon glyphicon-remove-sign "> Deletar</i>
+	<%end%>
+
+</div>

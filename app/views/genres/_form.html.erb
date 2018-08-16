@@ -1,0 +1,11 @@
+<%= form_for @genre do |f| %>
+	<p>
+		<%= f.label :Nome%><br> 
+		<%= f.text_field :name%> 
+	</p>
+	
+	<p>
+		<%= f.submit class: 'btn btn-primary'%>
+		<%= link_to 'Cancelar', genres_path, class: 'btn btn-defaut' %>
+	</p>
+<%end%>

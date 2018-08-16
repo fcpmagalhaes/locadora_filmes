@@ -1,0 +1,34 @@
+<%= form_for @film do |f| %>
+	<p class="form-group">
+		<%= f.label :Nome%><br> 
+		<%= f.text_field :name, class: "form-control"%> 
+	</p>
+	<p class="form-group">
+		<%= f.label :Descrição%><br> 
+		<%= f.text_area :description, rows:3, class: "form-control"%> 
+	</p>
+	<p class="form-group">
+		<%= f.label :Ano%><br> 
+		<%= f.number_field :year, class: "form-control"%>
+	</p>
+	<p class="form-group">
+		<%= f.label :Preço%><br> 
+		<%= f.number_field :price, value: number_to_currency(f.object.price.to_f, delimiter: '', unit: ''), step: :any, class: "form-control"%>
+	</p>
+	<p class="form-group">
+		<%= f.label :Gênero%><br> 
+		<% genre_array = Genre.all.map { |genre| [genre.name, genre.id] } %>
+		<%= f.select :genre_id, genre_array, class: "form-control"%>
+	</p>
+
+	<p class="form-group">
+		<%= f.label :Poster%><br> 
+		<%= f.text_field :poster, placeholder: ".GIF, .JPEG ou .PNG", class: "form-control"%> 
+	</p>
+
+	<p>
+		<%= f.submit class: 'btn btn-primary'%>
+		<%= link_to 'Cancelar', root_path, class: 'btn btn-defaut' %>
+	</p>
+
+<%end%>

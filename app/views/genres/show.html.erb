@@ -1,0 +1,23 @@
+<div class="container">
+	<div class="jumbotron">
+
+		<article>
+				<h2>O nome desse Gênero é:</h2>
+			
+				<h1><%=@genre.name%></h1>
+
+		</article>
+	</div>
+
+	<%= link_to genres_path, class: 'btn btn-link' do%>
+		<i class="glyphicon glyphicon-home"> Generos</i>
+	<%end%>
+
+	<%= link_to edit_genre_path(@genre), class: 'btn btn-link' do%>
+		<i class="glyphicon glyphicon-edit "> Editar</i>
+	<%end%>
+
+	<%= link_to genre_path(@genre), method: :delete, data:{ confirm: "Deseja deletar este gênero?"}, class: 'btn btn-link' do%>
+		<i class="glyphicon glyphicon-remove-sign "> Deletar</i>
+	<%end%>
+</div>
